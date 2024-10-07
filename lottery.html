@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="lottery.css">
+</head>
+<body>
+  <section>
+    <header><h1>Welcome to Reggae Lottery (Demo)</h1></header>
+
+    <!-- Main Lottery Page -->
+    <main class="betPage">
+      <div class="account">
+        <span class="balance-label">Your Demo balance is</span>
+        <div class="account-balance-div">
+         <b>$</b> <span class="balance">500</span>
+        </div>
+      </div>
+
+      <!-- Lottery Form -->
+      <form action="" id="betform">
+        <div class="stake-div">
+          <div class="stake">
+            <label for="stake-amount" class="stake-input-label"><b>Enter Stake Amount:</b></label>
+            <div class="stake-amount-container">
+              <div class="Amount-alert-container">
+                <b>$</b>
+                <input class=`"stake-amount" type="number" id="stake-amount" min="10" max="10000"  placeholder="$10 min">
+              </div>
+              <h5 class="insufficient-funds">Insufficient Funds!!!</h5>
+            </div>
+          </div>
+
+          <!-- buttons to increase stake amount -->
+          <div class="buttons">
+            <button class="stake-increment" type="button" value="10">+10</button>
+            <button class="stake-increment" type="button" value="50">+50</button>
+            <button class="stake-increment" type="button" value="100">+100</button>
+            <button class="stake-increment" type="button" value="200">+200</button>
+            <button class="stake-increment" type="button" value="500">+500</button>
+            <button class="stake-increment" type="button" value="1000">+1000</button>
+            <button class="stake-increment" type="button" value="0">clear</button>
+          </div>
+  
+        </div>
+
+        <!-- Selecting lucky numbers -->
+        <div class="choose-numbers">
+          <label for="1" class="choose">Choose 3 lucky Numbers:</label>
+          <input type="number" class="selections" name="1" id="1" min="1" max="4" step="1"  required>
+          <input type="number" class="selections" name="2" id="" min="1" max="4" step="1" required>
+          <input type="number" class="selections" name="3" id="" min="1" max="4" step="1" required><br>
+          <input type="number" class="selections" name="4" id="" min="1" max="4" step="1" required><br>
+        </div>
+
+        <!-- Random outcomes -->
+        <div class="outcomes-div">
+          <span>How lucky are you?:</span>
+          <span class="first outcomes">?</span>
+          <span class="second outcomes">?</span>
+          <span class="third outcomes">?</span>
+          <span class="fourth outcomes">?</span>
+        </div>
+
+        <!-- play and reset buttons   -->
+        <div class="play">
+          <Button class="draw" type="submit">Play</Button>
+          <Button class="draw" type="reset">Try Again</Button>
+        </div>
+      </form>
+  
+    </main>
+  </section>
+
+  <script src="lottery.js"></script>
+</body>
+</html>
