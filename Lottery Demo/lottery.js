@@ -140,4 +140,8 @@ reset.addEventListener('click', e =>{
     outcomes[i].innerText= '?'
   }
   stakeAmount.style.border=''
+
+  play.style.display= 'block';
+  reset.style.display='none';
+
 })
