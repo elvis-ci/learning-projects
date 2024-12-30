@@ -88,9 +88,18 @@ div.stake{
   position: relative;
 }
 
+div.Amount-alert-container{
+  width: 100px;
+  border: 0.5px solid black;
+  border-radius: 3px;
+  padding-left: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
 /* Insufficient funds alert */
-h5.insufficient-funds{
-  width: 120px;
+h5.insufficient-funds,h5.insufficient-stake{
   font-size: smaller;
   text-align: end;
   color: red;
@@ -109,7 +118,14 @@ label.stake-input-label{
   align-items: end;
 }
 
+input.stake-amount{
+  border: 0px;
+  outline: 0px;
+  width: 80%;
+}
+
 input.stake-amount::placeholder{
+  text-align: center;
   font-size: smaller;
   color: rgb(250, 135, 135);
 }

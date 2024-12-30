@@ -12,8 +12,9 @@
 
     <!-- Main Lottery Page -->
     <main class="betPage">
+      <!-- wallet balance -->
       <div class="account">
-        <span class="balance-label">Your Demo balance is</span>
+        <span class="balance-label">Demo Balance :</span>
         <div class="account-balance-div">
          <b>$</b> <span class="balance">500</span>
         </div>
@@ -23,13 +24,14 @@
       <form action="" id="betform">
         <div class="stake-div">
           <div class="stake">
-            <label for="stake-amount" class="stake-input-label"><b>Enter Stake Amount:</b></label>
+            <label for="stake-amount" class="stake-input-label"><b>Enter Amount To Stake :</b></label>
             <div class="stake-amount-container">
               <div class="Amount-alert-container">
                 <b>$</b>
-                <input class="stake-amount" type="number" id="stake-amount" min="10" max="10000"  placeholder="$10 min">
+                <input class="stake-amount" type="number" id="stake-amount" max="10000"  placeholder="min - $10">
               </div>
               <h5 class="insufficient-funds">Insufficient Funds!!!</h5>
+              <h5 class="insufficient-stake">Increase Your Stake!!!</h5>
             </div>
           </div>
 
