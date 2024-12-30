@@ -87,16 +87,16 @@ game.addEventListener('submit', e => {
       }
       
       // Generated Numbers
-      const G1 = generatedNumbers[0]
-      const G2 = generatedNumbers[1]
-      const G3 = generatedNumbers[2]
-      const G4 = generatedNumbers[3]
+      const G1 = generatedNumbers[0];
+      const G2 = generatedNumbers[1];
+      const G3 = generatedNumbers[2];
+      const G4 = generatedNumbers[3];
     
       // Selections
-      const S1 = selection[0].value
-      const S2 = selection[1].value
-      const S3 = selection[2].value
-      const S4 = selection[3].value
+      const S1 = selection[0].value;
+      const S2 = selection[1].value;
+      const S3 = selection[2].value;
+      const S4 = selection[3].value;
       
       // Reward Logic:(4/4 = stake * 50, 3/4 = stake * 10, 2/4 = cashback, 1/4 = loss)
       setTimeout(()=>{
