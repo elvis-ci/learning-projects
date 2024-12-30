@@ -35,25 +35,6 @@ stakebtns.forEach(btns =>{
   })
 });
 
-// stake input field beep red when invalid stake amount or insufficient balance
-function beep(){
-  if(stakeContainer.style.border== '' || stakeContainer.style.border== '0.5px solid black'){
-    stakeContainer.style.border= '2px solid red';
-  } else{
-    stakeContainer.style.border= '0.5px solid black';
-  }
-};
-
-//beep behaviour: every 3milisecs and clear beep after 5secs
-function warning(alertTxt, funct){
-  const beepInterval = setInterval(funct , 300)    
-  setTimeout(()=>{
-    clearInterval(beepInterval);
-  }, 5000)
-  stakeContainer.style.border= '2px solid red';
-  alertTxt.style.display='block';  
-};
-
 // form field behaviour
 game.addEventListener('submit', e => {
   e.preventDefault();
@@ -120,6 +101,25 @@ game.addEventListener('submit', e => {
     // callback beep function and display stake alert
     warning(stakeAlert, beep)
   }
+  // stake input field beep red when invalid stake amount or insufficient balance
+function beep(){
+  if(stakeContainer.style.border== '' || stakeContainer.style.border== '0.5px solid black'){
+    stakeContainer.style.border= '2px solid red';
+  } else{
+    stakeContainer.style.border= '0.5px solid black';
+  }
+};
+
+//beep behaviour: every 3milisecs and clear beep after 5secs
+function warning(alertTxt, funct){
+  const beepInterval = setInterval(funct , 300)    
+  setTimeout(()=>{
+    clearInterval(beepInterval);
+  }, 5000)
+  stakeContainer.style.border= '2px solid red';
+  alertTxt.style.display='block';  
+};
+
 });
 
 // Reset game
