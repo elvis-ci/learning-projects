@@ -102,23 +102,23 @@ game.addEventListener('submit', e => {
     warning(stakeAlert, beep)
   }
   // stake input field beep red when invalid stake amount or insufficient balance
-function beep(){
-  if(stakeContainer.style.border== '' || stakeContainer.style.border== '0.5px solid black'){
-    stakeContainer.style.border= '2px solid red';
-  } else{
-    stakeContainer.style.border= '0.5px solid black';
-  }
-};
+  function beep(){
+    if(stakeContainer.style.border== '' || stakeContainer.style.border== '0.5px solid black'){
+      stakeContainer.style.border= '2px solid red';
+    } else{
+      stakeContainer.style.border= '0.5px solid black';
+    }
+  };
 
-//beep behaviour: every 3milisecs and clear beep after 5secs
-function warning(alertTxt, funct){
-  const beepInterval = setInterval(funct , 300)    
-  setTimeout(()=>{
-    clearInterval(beepInterval);
-  }, 5000)
-  stakeContainer.style.border= '2px solid red';
-  alertTxt.style.display='block';  
-};
+  //beep behaviour: every 3milisecs and clear beep after 5secs
+  function warning(alertTxt, funct){
+    const beepInterval = setInterval(funct , 300)    
+    setTimeout(()=>{
+      clearInterval(beepInterval);
+    }, 5000)
+    stakeContainer.style.border= '2px solid red';
+    alertTxt.style.display='block';  
+  };
 
 });
 
