@@ -2,7 +2,7 @@ const game = document.forms['betform'];
 const play = document.querySelector('button[type=submit')
 const reset = document.querySelector('button[type=reset')
 const accountBalance = document.querySelector('.balance');
-const stakeDiv = document.querySelector('.stake-div')
+const stakeDiv = document.querySelector('.stake-and-buttons')
 const stakebtnsDiv = document.querySelector('.buttons')
 const stakebtns= document.querySelectorAll('.stake-increment');
 const stakeAmount = document.querySelector('.stake-amount');
@@ -10,8 +10,9 @@ const selection = document.querySelectorAll('.selections');
 const outcomes = document.querySelectorAll('.outcomes');
 const balanceAlert = document.querySelector('.insufficient-funds');
 const stakeAlert = document.querySelector('.insufficient-stake');
-const stakeContainer = document.querySelector('.Amount-alert-container')
+const stakeContainer = document.querySelector('.amount')
 
+stakebtnsDiv.style.display='none';
 // Display the buttons for increasing stake amount
 stakeAmount.addEventListener('click', e=>{
   stakeContainer.style.border= '0.5px solid black';
@@ -30,10 +31,15 @@ stakeAmount.addEventListener('click', e=>{
 stakebtns.forEach(btns =>{
   btns.addEventListener('click', f=>{
     f.preventDefault()
-    let currentStakeAmount = Number(stakeAmount.value) || 0; 
-    stakeAmount.value = btns.value? currentStakeAmount + Number(btns.value):0
+    let currentStakeAmount = Number(stakeAmount.value);
+    btns.value>0? stakeAmount.value = currentStakeAmount + Number(btns.value)
+    :(btns.value == "00" && currentStakeAmount > 0)? stakeAmount.value = currentStakeAmount + "" + btns.value
+    :stakeAmount.value = 0
   })
 });
+
+let newCalculatedBalance;
+
 
 // form field behaviour
 game.addEventListener('submit', e => {
@@ -49,10 +55,11 @@ game.addEventListener('submit', e => {
     
       // Array of generated numbers for lottery outcomes
       const generatedNumbers= [];
-      let currentBalance = Number(accountBalance.textContent.trim());  
+      let initialBalance = Number(accountBalance.textContent.trim());  
   
       for(let i = 0; i<selection.length && i<outcomes.length; i++){
-        generatedNumbers[i] = Math.ceil(Math.random() * 4);
+        generatedNumbers[i] = Math.ceil(Math.random() * 3);
+        // Display generated numbers as outcomes one after the other
         setTimeout(() =>{
           outcomes[i].innerText = generatedNumbers[i];
           if(selection[i].value == generatedNumbers[i]){
@@ -71,26 +78,51 @@ game.addEventListener('submit', e => {
       const G1 = generatedNumbers[0];
       const G2 = generatedNumbers[1];
       const G3 = generatedNumbers[2];
-      const G4 = generatedNumbers[3];
     
       // Selections
       const S1 = selection[0].value;
       const S2 = selection[1].value;
       const S3 = selection[2].value;
-      const S4 = selection[3].value;
       
       // Reward Logic:(4/4 = stake * 50, 3/4 = stake * 10, 2/4 = cashback, 1/4 = loss)
-      setTimeout(()=>{
-        if(S1 == G1 && S2 == G2 && S3 == G3 && S4 == G4){
-          accountBalance.textContent = (currentBalance - stakeAmount.value) + (stakeAmount.value * 50)
-        }else if((S1 == G1 && S2 == G2  && S3 == G3) || (S1 == G1 && S2 == G2  && S4 == G4)|| (S1 == G1 && S3 == G3  && S4 == G4) || (S2 == G2 && S3 == G3  && S4 == G4) ){
-          accountBalance.textContent = (currentBalance - stakeAmount.value) + (stakeAmount.value * 10)
-        }else if((S1 == G1 && S2 == G2) || (S1 == G1 && S3 == G3) || (S1 == G1 && S4 == G4) || (S2 == G2 && S3 == G3) || (S2 == G2 && S4 == G4) || (S3 == G3 && S4== G4)){
-          accountBalance.textContent = currentBalance
-        }else{
-          accountBalance.textContent = currentBalance - stakeAmount.value
+      // setTimeout(()=>{
+      //   if(S1 == G1 && S2 == G2 && S3 == G3){
+      //     accountBalance.textContent = (initialBalance - stakeAmount.value) + (stakeAmount.value * 10) 
+      //   }else if((S1 == G1 && S2 == G2) || (S1 == G1 && S3 == G3)|| (S2 == G2 && S3 == G3)){
+      //     accountBalance.textContent = (initialBalance - stakeAmount.value) + (stakeAmount.value / 2)
+      //   }else{
+      //     accountBalance.textContent = initialBalance - stakeAmount.value
+      //   }
+      // }, 5200);
+
+      // Increment the balance gradually
+      function balanceIncrement (){ setInterval(() => {
+        if (initialBalance < newCalculatedBalance) {
+          initialBalance += 10; // Increment by 10
+          accountBalance.textContent = initialBalance;
+        }else if(initialBalance > newCalculatedBalance){
+          initialBalance -= 10; // decrease by 10
+          accountBalance.textContent = initialBalance;
+        } else {
+          // Clear the interval when the target is reached
+          clearInterval(balanceIncrement);
+          accountBalance.textContent = newCalculatedBalance; // Ensure it stops exactly at the target
         }
-      }, 5200);
+      }, 1)}; // Update every 1 millisecond
+
+      setTimeout(() => {
+        if (S1 == G1 && S2 == G2 && S3 == G3) {
+          newCalculatedBalance = (initialBalance - stakeAmount.value) + (stakeAmount.value * 10);
+          balanceIncrement()
+        } else if ((S1 == G1 && S2 == G2) || (S1 == G1 && S3 == G3) || (S2 == G2 && S3 == G3)) {
+          newCalculatedBalance = (initialBalance - stakeAmount.value) + (stakeAmount.value / 2);
+          balanceIncrement()
+        } else {
+          newCalculatedBalance = initialBalance - stakeAmount.value;
+          balanceIncrement()
+        }
+      
+      }, 4500);      
       play.style.display= 'none';
       reset.style.display='block';
     }else{
@@ -119,7 +151,6 @@ game.addEventListener('submit', e => {
     stakeContainer.style.border= '2px solid red';
     alertTxt.style.display='block';  
   };
-
 });
 
 // Reset game

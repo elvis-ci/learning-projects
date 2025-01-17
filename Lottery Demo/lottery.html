@@ -3,39 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Reggae Lottery</title>
   <link rel="stylesheet" href="lottery.css">
 </head>
 <body>
   <section>
-    <header><h1>Welcome to Reggae Lottery (Demo)</h1></header>
+    <header>
+      <div class="header-title"><h1>Betting Betty</h1>&reg;</div>
+      <h5>"money for board, hand for mouth"</h5>
+    </header>
 
-    <!-- Main Lottery Page -->
     <main class="betPage">
-      <!-- wallet balance -->
+      <!-- Wallet balance -->
       <div class="account">
         <span class="balance-label">Demo Balance :</span>
         <div class="account-balance-div">
-         <b>$</b> <span class="balance">500</span>
+          <b>$</b> <span class="balance">5000</span>
         </div>
       </div>
 
       <!-- Lottery Form -->
       <form action="" id="betform">
-        <div class="stake-div">
-          <div class="stake">
-            <label for="stake-amount" class="stake-input-label"><b>Enter Amount To Stake :</b></label>
-            <div class="stake-amount-container">
-              <div class="Amount-alert-container">
+        <div class="stake-and-buttons">
+          <div class="stake-and-alerts">
+            <div class="stake-container">
+              <label for="stake-amount" class="stake-input-label"><b>Enter Amount To Stake :</b></label>
+              <div class="amount">
                 <b>$</b>
-                <input class="stake-amount" type="number" id="stake-amount" max="10000" min="0"  placeholder="min - $10">
+                <input class="stake-amount" type="number" id="stake-amount" min="10" placeholder="">  
               </div>
+            </div>
+            <div class="alert-container">
               <h5 class="insufficient-funds">Insufficient Funds!!!</h5>
               <h5 class="insufficient-stake">Increase Your Stake!!!</h5>
             </div>
           </div>
 
-          <!-- buttons to increase stake amount -->
+          <!-- Buttons to increase stake amount -->
           <div class="buttons">
             <button class="stake-increment" type="button" value="10">+10</button>
             <button class="stake-increment" type="button" value="50">+50</button>
@@ -43,36 +47,37 @@
             <button class="stake-increment" type="button" value="200">+200</button>
             <button class="stake-increment" type="button" value="500">+500</button>
             <button class="stake-increment" type="button" value="1000">+1000</button>
-            <button class="stake-increment" type="button" value="0">clear</button>
+            <button class="stake-increment" type="button" value="00">00</button>
+            <button class="stake-increment" type="button" value="0">Clear</button>
           </div>
         </div>
 
         <!-- Selecting lucky numbers -->
         <div class="choose-numbers">
-          <label for="1" class="choose">Choose 4 lucky Numbers:</label>
-          <input type="number" class="selections" name="1" id="1" min="1" max="4" step="1"  required>
-          <input type="number" class="selections" name="2" id="" min="1" max="4" step="1" required>
-          <input type="number" class="selections" name="3" id="" min="1" max="4" step="1" required><br>
-          <input type="number" class="selections" name="4" id="" min="1" max="4" step="1" required><br>
+          <label for="1" class="choose">Choose 3 Numbers :</label>
+          <input type="number" class="selections" name="1" id="1" min="1" max="4" step="1" required>
+          <input type="number" class="selections" name="2" id="2" min="1" max="4" step="1" required>
+          <input type="number" class="selections" name="3" id="3" min="1" max="4" step="1" required>
         </div>
 
         <!-- Random outcomes -->
         <div class="outcomes-div">
-          <span>How lucky are you?:</span>
-          <span class="first outcomes">?</span>
-          <span class="second outcomes">?</span>
-          <span class="third outcomes">?</span>
-          <span class="fourth outcomes">?</span>
+          <span class="outcome-label">How lucky are you?</span>
+          <span class="outcomes" id="outcome-1">?</span>
+          <span class="outcomes" id="outcome-2">?</span>
+          <span class="outcomes" id="outcome-3">?</span>
         </div>
 
-        <!-- play and reset buttons   -->
+        <!-- Play and reset buttons -->
         <div class="play">
-          <Button class="draw" type="submit">Play</Button>
-          <Button class="draw" type="reset">Play Again</Button>
+          <button class="draw" type="submit">Play</button>
+          <button class="draw" type="reset">Play Again</button>
         </div>
       </form>
     </main>
   </section>
+
+  <label for="time" class="time"></label>
 
   <script src="lottery.js"></script>
 </body>

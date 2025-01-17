@@ -1,184 +1,233 @@
-*{
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 }
 
-/* all buttons */
-button{
-  cursor: pointer;
-}
-
-/* all input tags */
-input{
-  margin: 0;
-  text-align: center;
-}
-
-section{
+body {
   height: 100vh;
-  width: 100%;
-  padding-top: 50px;
+  background-color: #f5f5f5;
+  color: #333;
+  display: flex;
+  align-items: center;
 }
 
-/* Page title */
-h1{
-  width: fit-content;
-  margin:0px auto;
+section {
+  margin: auto;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  text-align: center;
 }
 
 main{
-  width:fit-content;
-  margin: 20px auto;
-  position: relative;
+  padding: 20px;
+
 }
 
-/* Container of balance and balance label */
-div.account{
-  display: flex;
-  justify-content: end;
-}
-
-/* balance label */
-span.balance-label{
-  margin-right: 20px;
-  font-weight: bold;
-}
-
-/* balance amount container */
-.account-balance-div{
-  width: fit-content;
-  border: 1px solid gray;
-  background-color: rgb(168, 226, 179);
-  color: rgb(0, 0, 0);
-  text-align: center;
-  padding: 0 3px;
-}
-
-/* Container for slections and selection label */
-div.choose-numbers{
-  margin-top: 20px;
-  display: flex;
-  justify-content: end;
-}
-
-/* selections label */
-div.choose-numbers label{
-  margin-right: 8px;
-}
-
-/* container for .selections */
-div.choose-numbers .selections{
-  margin-left: 2px;
-}
-
-/* container for stake and stake label */
-div.stake-div{
-  height: 20px;
+header {
   width: 100%;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
+  color: #333;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 12px rgba(103, 103, 103, 0.315);
+  padding: 20px;
+  background-color:  #7ec8c2b4;
 }
 
-/* container for stake input and currency sign */
-div.stake{
-  width: 100%;
+.header-title{
   display: flex;
-  justify-content: end;
-  position: relative;
+  justify-content: center;
 }
 
-div.Amount-alert-container{
-  width: 100px;
-  border: 0.5px solid black;
-  border-radius: 3px;
-  padding-left: 5px;
+h5{
+ font-size: 0.7rem;
+ color: rgb(122, 117, 117);
+ font-style: italic;
+}
+
+.account{
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: end;
+  margin-bottom: 20px;
 }
 
-/* Insufficient funds alert */
-h5.insufficient-funds,h5.insufficient-stake{
-  font-size: smaller;
-  text-align: end;
-  color: red;
-  display: none;
-  margin: 0px;
+.balance-label {
+  padding-right: 10px;
+  font-weight: bold;
+  color: #555;
 }
 
-/* stake label */
-label.stake-input-label{
-  font-size: smaller;
+.account-balance-div {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  color: #155724;
 }
 
-.stake-amount-container{
+.stake-and-buttons {
+  margin-bottom: 35px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: end;
 }
 
-input.stake-amount{
-  border: 0px;
-  outline: 0px;
-  width: 80%;
+.stake-and-alerts {
+  margin-top: 20px;
 }
 
-input.stake-amount::placeholder{
-  text-align: center;
-  font-size: smaller;
-  color: rgb(250, 135, 135);
-}
-
-/* container for stake increment buttons */
-div.buttons{
-  display: none;
-  width: 100%;
-  flex-wrap: wrap;
-  margin-top: 3px;
-}
-
-/* stake increment buttons */
-.stake-increment {
-  height: 30px;
-  flex-basis: 24%;
-  margin: 2px 0.5% 0 0.5%;
-}
-
-/*  container for all random numbers */
-div.outcomes-div{
-  margin-top: 30px;
+.stake-container{
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: end;
 }
 
-/* each random .outcomes */
-.outcomes{
-  width: 40px;
-  border: 1.5px solid black;
+.stake-input-label{
+  font-size: 1em;
+  color: #555;
+  padding-right: 10px;
+}
+
+.amount {
+  max-width: 30%;
+  display: flex;
+  align-items: center;
+  border: 1px solid gray;
+  border-radius: 5px;
+  font-size: 1.2em;
+  padding: 0 0 0 5px;
+}
+
+input.stake-amount {
+  font-size: 1em;
+  padding: 0 0 0 2px;
+  border-radius: 5px;
+  border: 0;
+  outline: 0;
   text-align: center;
-  font-weight: bolder;
-  margin-right: 1px;
-  margin-left: 15px;
+  max-width: 88%;
 }
 
-/* play and reset buttons container */
-div.play{
-  height: 50px;
-  width: 100%;
-  margin-top: 50px;
+
+h5.insufficient-funds, h5.insufficient-stake {
+  font-size: 0.7em;
+  color: red;
+  display: none;
+  text-align: end;
+}
+
+.buttons {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5px;
+  justify-content: end;
+}
+
+.stake-increment {
+  width: 65px;
+  background-color: #f0f8ff;
+  border: 1px solid #7ec8c2;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 0 0 2px 1px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  flex-grow: 1;
+}
+
+.stake-increment:hover {
+  background-color: #7ec8c2;
+}
+
+.choose-numbers {
+  margin-top: 20px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.choose-numbers input {
+  width: 17%;
+  height: 30px;
+  margin-left: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.choose{
+  font-size: 0.9em;
+  color: #555;
+  padding-right: 10px;
+  font-weight: bold;
+}
+
+.outcomes-div {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+span.outcome-label{
+  font-weight: bold;
+  color: #d34444;
+  font-size: 0.9em;
+}
+
+.outcomes {
+  background-color: #f0f8ff;
+  border: 1px solid #7ec8c2;
+  padding: 15px;
+  border-radius: 50%;
+  width: 50px;
+  font-weight: bold;
+  font-size: 1.2em;
+  display: inline-block;
+  margin: 0 10px;
+  color: #333;
+  text-align: center;
+}
+
+.play {
+  margin-top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-button[type="submit"].draw, button[type="reset"].draw{
-height: fit-content;
-width: 100px;
-padding: 3px;
-background-color: greenyellow;
+button.draw {
+  background-color: #7ec8c2;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-button[type="reset"]{
+button.draw:hover {
+  background-color: #4db8a8;
+}
+
+button[type="reset"] {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
   display: none;
+}
+
+button[type="reset"]:hover {
+  background-color: #f1b0b7;
 }
