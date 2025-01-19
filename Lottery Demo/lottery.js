@@ -94,6 +94,27 @@ game.addEventListener('submit', e => {
       //     accountBalance.textContent = initialBalance - stakeAmount.value
       //   }
       // }, 5200);
+      
+      // function balanceIncrement (){ setInterval(() => {
+      //   if (initialBalance < newCalculatedBalance) {
+      //     initialBalance += 10; // Increment by 10
+      //     if(initialBalance > newCalculatedBalance){
+      //       initialBalance = newCalculatedBalance; // Ensure it stops exactly at the target
+      //     }
+      //     accountBalance.textContent = initialBalance;
+      //   }else if(initialBalance > newCalculatedBalance){
+      //     initialBalance -= 10; // decrease by 10
+      //     if(initialBalance < newCalculatedBalance){
+      //       initialBalance = newCalculatedBalance; // Ensure it stops exactly at the
+      //     } 
+      //     accountBalance.textContent = initialBalance;
+      //   } else {
+      //     // Clear the interval when the target is reached
+      //     clearInterval(balanceIncrement);
+      //     accountBalance.textContent = newCalculatedBalance; // Ensure it stops exactly at the target
+      //   }
+      // }, 1)}; // Update every 1 millisecond
+
 
       // Increment the balance gradually
       function balanceIncrement (){ setInterval(() => {
