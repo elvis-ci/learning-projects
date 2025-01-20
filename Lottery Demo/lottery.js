@@ -83,46 +83,20 @@ game.addEventListener('submit', e => {
       const S1 = selection[0].value;
       const S2 = selection[1].value;
       const S3 = selection[2].value;
-      
-      // Reward Logic:(4/4 = stake * 50, 3/4 = stake * 10, 2/4 = cashback, 1/4 = loss)
-      // setTimeout(()=>{
-      //   if(S1 == G1 && S2 == G2 && S3 == G3){
-      //     accountBalance.textContent = (initialBalance - stakeAmount.value) + (stakeAmount.value * 10) 
-      //   }else if((S1 == G1 && S2 == G2) || (S1 == G1 && S3 == G3)|| (S2 == G2 && S3 == G3)){
-      //     accountBalance.textContent = (initialBalance - stakeAmount.value) + (stakeAmount.value / 2)
-      //   }else{
-      //     accountBalance.textContent = initialBalance - stakeAmount.value
-      //   }
-      // }, 5200);
-      
-      // function balanceIncrement (){ setInterval(() => {
-      //   if (initialBalance < newCalculatedBalance) {
-      //     initialBalance += 10; // Increment by 10
-      //     if(initialBalance > newCalculatedBalance){
-      //       initialBalance = newCalculatedBalance; // Ensure it stops exactly at the target
-      //     }
-      //     accountBalance.textContent = initialBalance;
-      //   }else if(initialBalance > newCalculatedBalance){
-      //     initialBalance -= 10; // decrease by 10
-      //     if(initialBalance < newCalculatedBalance){
-      //       initialBalance = newCalculatedBalance; // Ensure it stops exactly at the
-      //     } 
-      //     accountBalance.textContent = initialBalance;
-      //   } else {
-      //     // Clear the interval when the target is reached
-      //     clearInterval(balanceIncrement);
-      //     accountBalance.textContent = newCalculatedBalance; // Ensure it stops exactly at the target
-      //   }
-      // }, 1)}; // Update every 1 millisecond
-
 
       // Increment the balance gradually
       function balanceIncrement (){ setInterval(() => {
         if (initialBalance < newCalculatedBalance) {
           initialBalance += 10; // Increment by 10
+          if(initialBalance > newCalculatedBalance){
+            initialBalance = newCalculatedBalance; // Ensure it stops exactly at the target
+          }
           accountBalance.textContent = initialBalance;
         }else if(initialBalance > newCalculatedBalance){
           initialBalance -= 10; // decrease by 10
+          if(initialBalance < newCalculatedBalance){
+            initialBalance = newCalculatedBalance; // Ensure it stops exactly at the target
+          } 
           accountBalance.textContent = initialBalance;
         } else {
           // Clear the interval when the target is reached
@@ -131,18 +105,18 @@ game.addEventListener('submit', e => {
         }
       }, 1)}; // Update every 1 millisecond
 
+      // Check the outcomes after 4.5 seconds. (2/3 = 50% cashback, 3/3 = stake * 10)
       setTimeout(() => {
         if (S1 == G1 && S2 == G2 && S3 == G3) {
-          newCalculatedBalance = (initialBalance - stakeAmount.value) + (stakeAmount.value * 10);
-          balanceIncrement()
+          newCalculatedBalance = (initialBalance - stakeAmount.value) + (stakeAmount.value * 10); //
+          balanceIncrement() // Increment the balance depending on the outcome
         } else if ((S1 == G1 && S2 == G2) || (S1 == G1 && S3 == G3) || (S2 == G2 && S3 == G3)) {
           newCalculatedBalance = (initialBalance - stakeAmount.value) + (stakeAmount.value / 2);
-          balanceIncrement()
+          balanceIncrement() // Increment the balance depending on the outcome
         } else {
           newCalculatedBalance = initialBalance - stakeAmount.value;
-          balanceIncrement()
+          balanceIncrement() // Increment the balance depending on the outcome
         }
-      
       }, 4500);      
       play.style.display= 'none';
       reset.style.display='block';
@@ -165,7 +139,9 @@ game.addEventListener('submit', e => {
 
   //beep behaviour: every 3milisecs and clear beep after 5secs
   function warning(alertTxt, funct){
-    const beepInterval = setInterval(funct , 300)    
+    const beepInterval = setInterval(funct , 300);
+    
+    //clear balance beep effect after 5secs   
     setTimeout(()=>{
       clearInterval(beepInterval);
     }, 5000)
@@ -174,20 +150,22 @@ game.addEventListener('submit', e => {
   };
 });
 
-// Reset game
+// Reset game behaviour
 reset.addEventListener('click', e =>{
   e.preventDefault();
   game.reset();
-  stakeAmount.removeAttribute('readonly');
+  stakeAmount.removeAttribute('readonly'); //remove readonly attribute from stake input field
   stakeAmount.value = 0;
   balanceAlert.style.display='none';
   stakeAlert.style.display='none';
 
+  // Reset the selection and outcomes fields
   for(let i = 0; i<selection.length && i<outcomes.length; i++){
     selection[i].style.border = '1px solid black'
     selection[i].removeAttribute('readonly');
     outcomes[i].innerText= '?'
   }
+
   stakeContainer.style.border=''
   play.style.display= 'block';
   reset.style.display='none';
