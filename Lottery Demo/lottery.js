@@ -38,8 +38,7 @@ stakebtns.forEach(btns =>{
   })
 });
 
-let newCalculatedBalance;
-
+let newCalculatedBalance; // variable to store the new balance after the game
 
 // form field behaviour
 game.addEventListener('submit', e => {
@@ -140,7 +139,7 @@ game.addEventListener('submit', e => {
   //beep behaviour: every 3milisecs and clear beep after 5secs
   function warning(alertTxt, funct){
     const beepInterval = setInterval(funct , 300);
-    
+
     //clear balance beep effect after 5secs   
     setTimeout(()=>{
       clearInterval(beepInterval);
