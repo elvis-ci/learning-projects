@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html{
+  font-size: 14px;
+}
+
+main{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* width: 1200px; */
+}
+
+.left-section{
+  width: 900px;
+}
+
+.toggle{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  color: white;
+}
+
+.active-panel{
+  color: rgb(255, 255, 255);
+}
+
+.tab:hover{
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.slider{
+  height: 90%;
+  width: 50%;
+  position: absolute;
+  background-color: white;
+  border-radius: 34px;
+  z-index: 1;
+  transition: all 0.3s ease-in;
+  left: 1px;
+}
+
+.slider-right{
+  z-index: 1;
+  transform: translateX(calc(100% - 2px));
+}
+
+.option-1{
+  transition: all 0.4s ease-in;
+}
+
+.option-2{
+  transition: all 0.4s ease-in;
+}
+
+.days-panel{
+  height: 100%;
+  width: 100%;
+  grid-template-columns: repeat(11, 1fr); /* 8 equal columns */
+  gap: 15px;
+  padding: 10px 0;
+  align-items: stretch; /* Ensures uniform height */
+}
+
+.today-panel, .tomorrow-panel{
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  grid-template-columns: repeat(15, 1fr); /* 8 equal columns */
+  gap: 10px;
+  padding: 10px 0;
+  align-items: stretch; /* Ensures uniform height */
+}
+
+.days{
+  height: 100%;
+  border-radius: 20px;
+  grid-column: span 2;
+  border: 0.5px solid black;
+  overflow: hidden;
+}
+
+.days:hover {
+  background-color: #303a4b;
+}
+
+.active-day {
+  grid-column: span 3; /* Makes the active child nearly twice the size */
+  background-color:#1e293b; /* Just to highlight the active item */
+}
+
+.other-days{
+  width: 100%;
+  text-align: center;
+}
+
+.weekday-in-focus{
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.date{
+  font-size: 0.9rem;
+}
+
+.temperature{
+  font-size: min(5vw, 8vh)
+}
+
+.scale {
+  font-size: min(3vw, 5vh)
+}
+
+.weather-icon{
+  font-size: min(5vw, 9vh)
+}
+
+.weather-description-list{
+  font-size: min(1vw, 2vh);
+}
+/* .today- panel classes also serve as .tomorrow- panel classes */
+.today-temperature, .tomorrow-temperature{
+  font-size: min(7vw, 7vh)
+}
+
+.today-scale, .tomorrow-scale{
+  font-size: min(3vw, 5vh)
+}
+
+.today-weather-icon, .tomorrow-weather-icon{
+  font-size: min(5vw, 9vh)
+}
+
+.today-weather-description-list, .tomorrow-weather-description-list{
+  font-size: min(3vw, 3vh);
+}
+
+.popular-cities-container{
+  overflow-y: scroll;
+}
+
+.popular-cities-container::-webkit-scrollbar{
+  width: 5px;
+}
+
+.popular-cities-container::-webkit-scrollbar-thumb{
+  background: gray ;
+  border-radius: 10px;
+}
+
+.popular-cities-container::-webkit-scrollbar-thumb:hover{
+  background: rgb(170, 168, 168) ;
+}
+
+.weather-icon-popular-cities{
+  font-size: min(4vw, 4vh)
+}
+
+.weather-Temperature-container-pop-cities{
+  font-size: min(3vw, 3vh)
+}
+
+.country-city{
+  line-height: 2px ;
+}
+
+.popular-cities:hover{
+  background-color: #303a4b;
+}
+
+.disabled{
+  display: none;
+}
+
+/* ;ight and dark theme styles */
+.header-light {
+  background-color: #e5e7eb; /* Softer gray for better visibility */
+  color: #1f2937; /* Darker text for better contrast */
+  transition: all 0.3s ease-in; /* Smooth transition for better UX */
+}
+
+.header-dark {
+  background-color: #1f2937; /* Dark navy for a richer dark mode */
+  color: #e5e7eb; /* Light gray for better readability */
+  transition: all 0.3s ease-in; /* Smooth transition for better UX */
+}
+
+.body-light {
+  background-color: #ffffff; /* Pure white for a clean look */
+  color: #1f2937; /* Standard dark text for contrast */
+  transition: all 0.3s ease-in; /* Smooth transition for better UX */
+}
+
+.body-dark {
+  background-color: #111827; /* Deep blue-black for less strain on eyes */
+  color: #bebebe; /* Light gray for good contrast */
+  transition: all 0.3s ease-in; /* Smooth transition for better UX */
+}
+
+.light-theme {
+  background-color: #e5e7eb; /* Softer gray for better visibility */
+  color: #111827; /* Strong contrast for readability */
+  transition: all 0.3s ease-in; /* Smooth transition for better UX */
+}
+
+.dark-theme {
+  background-color: #1e293b; /* Dark blue-gray for a more polished look */
+  color: #f3f4f6; /* Light gray for good contrast */
+  transition: all 0.3s ease-in; /* Smooth transition for better UX */
+}
+
+.form-light {
+  background-color: #ffffff;
+  border: 1px solid #9ca3af;
+  color: #1f2937;
+  transition: all 0.3s ease-in; /* Smooth transition for better UX */
+
+}
+
+.form-dark {
+  background-color: #1e293b;
+  border: 1px solid #4b5563;
+  color: #e5e7eb;
+  transition: all 0.3s ease-in; /* Smooth transition for better UX */
+
+}
+
+.form:hover {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 4px rgba(37, 99, 235, 0.5);
+}
+
+.city-search-input{
+  background-color: transparent;
+}
