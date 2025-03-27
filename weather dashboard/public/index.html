@@ -19,9 +19,9 @@
           <span class="location px-1">Current Location</span>
         </li>
         <li class="search">
-          <form id="search-form" action="" class="form form-light rounded-3xl">
-            <input type="text" name="" id="city-search" class="city-search-input border-none rounded-3xl outline-none pl-5 py-2 placeholder:font-normal" placeholder="Search for a city">
-            <button type="submit" class="py-2 px-3 border-l-2 border-gray-400"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
+          <form id="search-form" action="" class="form flex form-light rounded-3xl overflow-hidden">
+            <input type="text" name="" id="city-search" class="city-search-input placeholder:font-normal" placeholder="Search for a city">
+            <button type="submit" class="button"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
           </form>
         </li>
         <li class="scale-toggle">
@@ -50,15 +50,7 @@
     <section class="left-section py-2 px-5 flex flex-col">
       <!-- top side of weather section -->
       <div class="h-[35%] flex flex-col">
-        <div class="weather-date-container flex items-center justify-between">
-          <div class="date-change w-1/4 font-semibold">
-            <ul class="flex items-center justify-between tabs-container">
-              <li data-target="#today-panel" class="tab today active-panel">Today</li>
-              <li data-target="#tomorrow-panel" class="tab tomorrow">Tomorrow</li>
-              <li data-target="#days-panel" class="tab next-5-days">Next 5 days</li>  
-            </ul>
-          </div>
-
+        <div class="weather-date-container flex items-center justify-end">
           <!-- forecast/airquality toggle -->
           <div class=" bg-gray-400 min-w-52 min-h-7 rounded-full p-2 toggle toggle-container">
             <div class="scale-toggle-slider rounded-full slider slider-left">
@@ -70,69 +62,13 @@
 
         <!-- weather daily/hourly  display -->
         <!-- weekday classes also represent hour classes  -->
-        <div class="weather-display font-semibold flex-1 py-2">
-          <div id="today-panel" class="today-panel light-theme theme-component weather-panel flex-col overflow-hidden flex">
-            <div class="date weekday-header flex items-center justify-between border-gray-500 border-b px-4">
-              <span class="weekday font-bold text-lg">Today</span>
-              <span class="date">11/3/2025</span>
-            </div>
-          
-            <div class="py-1 flex-1 flex">
-              <div class="weather-details w-[40%] flex flex-col items-center justify-center">
-                <div class="weather-icon-containers">
-                  <i class="fa-solid fa-cloud-sun today-weather-icon "></i>
-                </div>
-          
-                <div class="temperature-container text-center">
-                  <span class="today-temperature font-semibold ">18&deg;</span>
-                  <span class="today-scale ">C</span>
-                </div>
-              </div>
-          
-              <div class="other-weather-details w-[50%] flex flex-col justify-center px-4">
-                <ul class="today-weather-description-list space-y-1 h-full flex flex-col justify-center border-gray-500 border-opacity-40 border-l">
-                  <li class="weather-description"><strong>Weather:</strong> <span class="condition">Cloudy</span></li>
-                  <li class="weather-description"><strong>Humidity:</strong> <span class="condition">75%</span></li>
-                  <li class="weather-description"><strong>Wind Speed:</strong> <span class="condition">10 km/h</span></li>    
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div id="tomorrow-panel" class="tomorrow-panel light-theme theme-component weather-panel flex-col overflow-hidden flex disabled ">
-            <div class="date weekday-header flex items-center justify-between border-gray-500 border-b px-4">
-              <span class="weekday font-bold text-lg">Tomorrow</span>
-              <span class="date">12/3/2025</span>
-            </div>
-          
-            <div class="py-1 flex-1 flex">
-              <div class="weather-details w-[40%] flex flex-col items-center justify-center">
-                <div class="weather-icon-containers">
-                  <i class="fa-solid fa-cloud-sun tomorrow-weather-icon "></i>
-                </div>
-          
-                <div class="temperature-container text-center">
-                  <span class="tomorrow-temperature font-semibold ">18&deg;</span>
-                  <span class="tomorrow-scale ">C</span>
-                </div>
-              </div>
-          
-              <div class="other-weather-details w-[50%] flex flex-col justify-center px-4">
-                <ul class="tomorrow-weather-description-list space-y-1 h-full flex flex-col justify-center border-gray-500 border-opacity-40 border-l">
-                  <li class="weather-description"><strong>Weather:</strong> <span class="condition">Cloudy</span></li>
-                  <li class="weather-description"><strong>Humidity:</strong> <span class="condition">75%</span></li>
-                  <li class="weather-description"><strong>Wind Speed:</strong> <span class="condition">10 km/h</span></li>    
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div id="days-panel" class="days-panel weather-panel grid disabled">
+        <div class="weather-display font-semibold flex-1 ">
+          <div id="days-panel" class="days-panel weather-panel grid ">
             <!-- day 1 -->
             <div class="days light-theme theme-component active-day py-1 px-4 flex flex-col ">
-              <div class="date weekday-header flex justify-between items-center ">
-                <span class="weekday weekday-in-focus ">weekday</span>
-                <span class="date">Date</span>
+              <div class="weekday-header flex justify-between items-center ">
+                <span class="weekday weekday-in-focus ">Monday</span>
+                <span class="date">11/3/2025</span>
               </div>
   
               <div class="py-1 flex-1 flex flex-col justify-between">
@@ -158,9 +94,9 @@
   
             <!-- day 2 -->
             <div class="days light-theme theme-component flex flex-col">
-              <div class="date weekday-header flex justify-between items-center py-1 px-3">
-                <span class="weekday other-days">weekday</span>
-                <span class="date hidden">Date</span>
+              <div class="weekday-header flex justify-between items-center py-1 px-3">
+                <span class="weekday other-days">Tuesday</span>
+                <span class="date hidden">12/3/2025</span>
               </div>
 
               <div class="weather-details flex-1 flex flex-col items-center justify-center">
@@ -169,7 +105,7 @@
                 </div>
 
                 <div class="temperature-container self-center">
-                  <span class="temperature">18&deg;<span class="scale">C</span></span>
+                  <span class="temperature">19&deg;<span class="scale">C</span></span>
                 </div>
 
               </div>
@@ -177,9 +113,9 @@
 
             <!-- day 3 -->
             <div class="days light-theme theme-component flex flex-col">
-              <div class="date weekday-header flex justify-between items-center py-1 px-3">
-                <span class="weekday other-days">weekday</span>
-                <span class="date hidden">Date</span>
+              <div class="weekday-header flex justify-between items-center py-1 px-3">
+                <span class="weekday other-days">Wednesday</span>
+                <span class="date hidden">13/3/2025</span>
               </div>
 
               <div class="weather-details flex-1 flex flex-col items-center justify-center">
@@ -188,7 +124,7 @@
                 </div>
 
                 <div class="temperature-container self-center">
-                  <span class="temperature">18&deg;<span class="scale">C</span></span>
+                  <span class="temperature">20&deg;<span class="scale">C</span></span>
                 </div>
 
               </div>
@@ -196,9 +132,9 @@
 
             <!-- day 4 -->
             <div class="days light-theme theme-component flex flex-col">
-              <div class="date weekday-header flex justify-between items-center py-1 px-3">
-                <span class="weekday other-days">weekday</span>
-                <span class="date hidden">Date</span>
+              <div class="weekday-header flex justify-between items-center py-1 px-3">
+                <span class="weekday other-days">Thursday</span>
+                <span class="date hidden">14/3/2025</span>
               </div>
 
               <div class="weather-details flex-1 flex flex-col items-center justify-center">
@@ -207,7 +143,7 @@
                 </div>
 
                 <div class="temperature-container self-center">
-                  <span class="temperature">18&deg;<span class="scale">C</span></span>
+                  <span class="temperature">21&deg;<span class="scale">C</span></span>
                 </div>
 
               </div>
@@ -215,9 +151,9 @@
 
             <!-- day 5 -->
             <div class="days light-theme theme-component flex flex-col">
-              <div class="date weekday-header flex justify-between items-center py-1 px-3">
-                <span class="weekday other-days">weekday</span>
-                <span class="date hidden">Date</span>
+              <div class="weekday-header flex justify-between items-center py-1 px-3">
+                <span class="weekday other-days">Friday</span>
+                <span class="date hidden">15/3/2025</span>
               </div>
 
               <div class="weather-details flex-1 flex flex-col items-center justify-center">
@@ -226,13 +162,51 @@
                 </div>
 
                 <div class="temperature-container self-center">
-                  <span class="temperature">18&deg;<span class="scale">C</span></span>
+                  <span class="temperature">22&deg;<span class="scale">C</span></span>
                 </div>
 
               </div>
             </div>
   
           </div>
+
+          <div id="day-expand-panel" class="details-panel-container weather-panel overflow-hidden disabled">
+            <div class="details-panel light-theme theme-component flex flex-col">
+              <div class="date weekday-header flex justify-between border-gray-500 border-b py-1 px-4">
+                <div class="">
+                  <span class="weekday font-bold text-lg">Today</span>
+                  <span class="date"></span>  
+                </div>
+  
+                <span class="cancel font-semibold text-xl hover:cursor-pointer">X</span>
+              </div>
+            
+              <div class="py-1 flex-1 flex ">
+                <div class="weather-details w-[40%] flex flex-col items-center justify-center">
+                  <div class="weather-icon-containers">
+                    <i class="fa-solid fa-cloud-sun today-weather-icon "></i>
+                  </div>
+            
+                  <div class="temperature-container text-center">
+                    <span class="today-temperature font-semibold ">18&deg;</span>
+                    <span class="today-scale ">C</span>
+                  </div>
+                </div>
+            
+                <div class="other-weather-details w-[50%] flex flex-col justify-center px-4">
+                  <ul class="today-weather-description-list space-y-1 h-full flex flex-col justify-center border-gray-500 border-opacity-40 border-l">
+                    <li class="weather-description"><strong>Weather:</strong> <span class="condition">Cloudy</span></li>
+                    <li class="weather-description"><strong>Humidity:</strong> <span class="condition">75%</span></li>
+                    <li class="weather-description"><strong>Wind Speed:</strong> <span class="condition">10 km/h</span></li>    
+                  </ul>
+                </div>
+              </div>
+  
+            </div>
+          </div>
+  
+
+
         </div>
       </div>
 
@@ -251,12 +225,12 @@
     <!-- chances of rain and popular cities -->
     <aside class="w-1/4 py-4">
       <!-- chances of rain section -->
-      <div class="h-[40%] bg-gray-600">
+      <div class="h-[35%] bg-gray-600">
         
       </div>
 
       <!-- popular cities section -->
-      <section class="popular-cities-secion h-[60%] flex flex-col px-1">
+      <section class="popular-cities-secion h-[65%] flex flex-1 flex-col px-1">
         <div class="popular-cities-title px-3 py-2 font-semibold">Popuar Cities</div>
         <div class="popular-cities-container h-[89%] flex-1 space-y-4 px-3 py-2">
           <div class="popular-cities h-[6.5rem] w-full light-theme theme-component rounded-2xl flex px-7">

@@ -11,6 +11,7 @@ main{
   justify-content: center;
   width: 100%;
   /* width: 1200px; */
+  background-color: red;
 }
 
 .left-section{
@@ -24,15 +25,6 @@ main{
   position: relative;
   cursor: pointer;
   color: white;
-}
-
-.active-panel{
-  color: rgb(255, 255, 255);
-}
-
-.tab:hover{
-  color: rgb(255, 255, 255);
-  cursor: pointer;
 }
 
 .slider{
@@ -68,14 +60,24 @@ main{
   align-items: stretch; /* Ensures uniform height */
 }
 
-.today-panel, .tomorrow-panel{
+.details-panel-container{
   height: 100%;
   width: 100%;
   border-radius: 20px;
-  grid-template-columns: repeat(15, 1fr); /* 8 equal columns */
   gap: 10px;
   padding: 10px 0;
-  align-items: stretch; /* Ensures uniform height */
+}
+
+.details-panel{
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.cancel{
+  width: 50px;
+  display: flex;
+  justify-content: center;
 }
 
 .days{
@@ -239,4 +241,32 @@ main{
 
 .city-search-input{
   background-color: transparent;
+  padding: 8px 0 8px 20px;
+  margin: 0px;
+  outline: 0px;
+  border: none;
+}
+
+.date-header{
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button{
+  height: 100%;
+  width: 45px;
+  padding: 8px 12px;
+  border-left-width: 2px;
+  border-color: #9ca3af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form{
+  height: 35px;
+  padding: 0;
+  /* background-color: red; */
 }

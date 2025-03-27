@@ -4,11 +4,9 @@ const main = document.querySelector('main');
 const mapButton = document.querySelector('.map-view-button');
 const themes = document.querySelectorAll('.theme-component');
 const footer = document.querySelector('footer');
-const today = document.querySelector('.today');
-const tomorrow = document.querySelector('.tomorrow');
-const next5Days = document.querySelector('.next-5-days');
-const panels = document.querySelectorAll('.weather-panel');
-const tabs = [today, tomorrow, next5Days];
+const days = document.querySelectorAll('.days');
+const daysPanel = document.querySelector('.days-panel');
+const detailsPanelContainer = document.querySelector('.details-panel-container');
 
 
 // store site state for reload 
@@ -23,27 +21,10 @@ document.addEventListener('DOMContentLoaded', () =>{
     searchField.value= savedCity;
   }
   themeUpdate();
-
-  const activeTab = localStorage.getItem('activeTab');
-  console.log(activeTab)
-  tabs.forEach((tab, index) => {
-    tab.classList.remove('active-panel');
-    panels[index].classList.add('disabled');
-    if(tab.textContent == activeTab){
-      tab.classList.add('active-panel');
-      const targetpanel = document.querySelector(tab.dataset.target);
-      console.log(targetpanel.id)
-      if(panels[index]==targetpanel){
-        panels[index].classList.remove('disabled')
-      }
-    }
-  })
 });
 
 function themeUpdate(){
   if(toggleSlider[1].classList.contains('slider-right')){
-    console.log('yes')
-
     const form = document.querySelector('.form');
 
     themes.forEach(theme =>{
@@ -55,8 +36,6 @@ function themeUpdate(){
     form.classList.add('form-dark');
     footer.classList.add('header-dark');
   }else{
-    console.log('no')
-
     themes.forEach(theme =>{
       theme.classList.remove('dark-theme')
     });
@@ -104,31 +83,74 @@ toggleContainers.forEach((toggleContainer, index) => {
   });
 });
 
-// weather tabs
-const tabsContainer = document.querySelector('.tabs-container');
+function updateDetailsPanel(weekday, date){
+  const detailsPanel = document.querySelector('.details-panel');
+  const detailsPanelWeekday = detailsPanel.querySelector('.weekday');
+  const detailsPanelWeatherIcon = detailsPanel.querySelector('.weather-icon-containers')
+  const detailsPanelTemperature = detailsPanel.querySelector('.today-temperature')
+  const detailsPanelScale = detailsPanel.querySelector('.today-scale')
 
-// Select active tab
-tabsContainer.addEventListener('click', (e) => {
+  detailsPanel.innerHTML = `
+    <div class="date weekday-header flex justify-between border-gray-500 border-b py-1 px-4">
+      <div class="date-header">
+        <span class="weekday font-bold text-lg">${weekday}</span>
+        <span class="date">${date}</span>  
+      </div>
 
-  tabs.forEach((tab) => {
-    tab.classList.remove('active-panel');  
-  });
-  e.target.classList.add('active-panel');
-  localStorage.setItem('activeTab', e.target.textContent.toString());
+      <span class="cancel font-semibold text-xl hover:cursor-pointer">X</span>
+    </div>
+  
+    <div class="py-1 flex-1 flex ">
+      <div class="weather-details w-[40%] flex flex-col items-center justify-center">
+        <div class="weather-icon-containers">
+          <i class="fa-solid fa-cloud-sun today-weather-icon "></i>
+        </div>
+  
+        <div class="temperature-container text-center">
+          <span class="today-temperature font-semibold ">18&deg;</span>
+          <span class="today-scale ">C</span>
+        </div>
+      </div>
+  
+      <div class="other-weather-details w-[50%] flex flex-col justify-center px-4">
+        <ul class="today-weather-description-list space-y-1 h-full flex flex-col justify-center border-gray-500 border-opacity-40 border-l">
+          <li class="weather-description"><strong>Weather:</strong> <span class="condition">Cloudy</span></li>
+          <li class="weather-description"><strong>Humidity:</strong> <span class="condition">75%</span></li>
+          <li class="weather-description"><strong>Wind Speed:</strong> <span class="condition">10 km/h</span></li>    
+        </ul>
+      </div>
+    </div>`
 
-  if(e.target.tagName = "li"){    
-    const targetpanel = document.querySelector(e.target.dataset.target); 
-    panels.forEach((panel) => {
-      if(panel==targetpanel){
-        panel.classList.remove('disabled')
-      } else{
-        panel.classList.add('disabled')
-      };
-      localStorage.setItem('activepanel',panel.classList.toString());
-    });
-  };
+  const cancel = document.querySelector('.cancel');
+  cancel.addEventListener('click', e => {
+    e.preventDefault
+    detailsPanelContainer.classList.add('disabled')
+    daysPanel.classList.remove('disabled')
 
-});
+  })
+
+}
+
+days.forEach((day) =>{
+  day.addEventListener('click', e =>{
+    const weekday = day.querySelector('.weekday').textContent.toString();
+    const date = day.querySelector('.date').textContent.toString();
+
+    detailsPanelContainer.classList.remove('disabled')
+    daysPanel.classList.add('disabled')
+
+    updateDetailsPanel(weekday, date)
+  })
+
+})
+
+const cancel = document.querySelector('.cancel');
+cancel.addEventListener('click', e => {
+  e.preventDefault
+  detailsPanelContainer.classList.add('disabled')
+  daysPanel.classList.remove('disabled')
+
+})
 
 
 // weather reports
