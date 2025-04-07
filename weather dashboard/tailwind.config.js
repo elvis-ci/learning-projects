@@ -1,10 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   mode: 'jit',
-  content: ["./public/*.html"],
+  content: ["./**/*.html"],
   theme: {
     extend: {},
   },
   plugins: [],
+  safelist: ['border-gray-500', 'border-b'
+  ]
 }
 

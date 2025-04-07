@@ -1,5 +1,3 @@
-const form = document.getElementById('search-form');
-const searchField = document.querySelector('.city-search-input');
 
 // get city information
 const getCity = async (city) =>{
@@ -21,10 +19,10 @@ const getCity = async (city) =>{
   }
 }
 
-const getCurrentCondition = async (cityKey) => {
+const getPopularCities = async () => {
 
-  const base = 'http://dataservice.accuweather.com/currentconditions/v1/';
-  const query = `${cityKey}?apikey=${key}`;
+  const base = 'http://dataservice.accuweather.com/currentconditions/v1/topcities/50';
+  const query = `?apikey=${key}`;
 
   try {
     const response = await fetch(base + query);
@@ -38,12 +36,12 @@ const getCurrentCondition = async (cityKey) => {
   
     console.error('Error fetching city:', error.message);
     return null;
-  }
-}
+  };
+};
 
 const getDailyForecast = async (cityKey, metric) => {
   const base = 'http://dataservice.accuweather.com/forecasts/v1/daily/5day/';
-  const query = `${cityKey}?apikey=${key}&metric=${metric}`;
+  const query = `${cityKey}?apikey=${key}&details=true&metric=${metric}`;
 
   try {
     const response = await fetch(base + query);
@@ -56,16 +54,5 @@ const getDailyForecast = async (cityKey, metric) => {
   } catch (error) {
     console.error('Error fetching city:', error.message);
     return null;
-  }
-}
-
-const dailyForecast = async (citykey) =>{
-  const celcuisData = await getDailyForecast(citykey, true)
-  const fahrenheitData = await getDailyForecast(citykey, false)
-
-  return {
-    celcuisData, 
-    fahrenheitData,
-  }
-}
-
+  };
+};

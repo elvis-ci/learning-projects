@@ -14,23 +14,11 @@
           <i class="fa-solid fa-cloud"></i>
           <span>VERWATCH</span>
         </li>
-        <li tabindex="0" class="current-location">
-          <i class="fa-solid fa-location-dot fa-xl"></i>
-          <span class="location px-1">Current Location</span>
-        </li>
         <li class="search">
           <form id="search-form" action="" class="form flex form-light rounded-3xl overflow-hidden">
             <input type="text" name="" id="city-search" class="city-search-input placeholder:font-normal" placeholder="Search for a city">
             <button type="submit" class="button"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
           </form>
-        </li>
-        <li class="scale-toggle">
-          <div class="metric-toggle bg-gray-400 min-w-20 min-h-7 rounded-full p-2 toggle overflow-hidden toggle-container">
-            <div class="metric-slider rounded-full slider slider-left">
-            </div>
-            <span class="scale-toggle-switch option option-1  text-gray-600 font-bold text-sm absolute z-10 left-0 w-1/2 text-center">&deg;C</span>
-            <span class="scale-toggle-switch option option-2 font-bold text-sm absolute z-10 right-0 w-1/2 text-center">&deg;F</span>
-          </div>
         </li>
         <li class="dark-mode-tggle">
           <div class=" bg-gray-400 min-w-20 min-h-7 rounded-full p-2 toggle toggle-container dark-mode-toggle">
@@ -49,20 +37,23 @@
     <!-- entire left side of page content -->
     <section class="left-section py-2 px-5 flex flex-col">
       <!-- top side of weather section -->
-      <div class="h-[35%] flex flex-col">
-        <div class="weather-date-container flex items-center justify-end">
+      <div class="h-[271px] flex flex-col">
+        <div class="weather-date-container flex items-center justify-between px-5">
+          <div tabindex="0" class="current-location">
+            <i class="fa-solid fa-location-dot location"> </i>
+            <span class="location px-1 font-sans"></span>
+          </div>
+  
           <!-- forecast/airquality toggle -->
-          <div class=" bg-gray-400 min-w-52 min-h-7 rounded-full p-2 toggle toggle-container">
-            <div class="scale-toggle-slider rounded-full slider slider-left">
+          <div class="metric-toggle bg-gray-400 min-w-20 min-h-7 rounded-full p-2 toggle overflow-hidden toggle-container">
+            <div class="metric-slider rounded-full slider slider-left">
             </div>
-            <span class="option-1 option text-gray-600 font-bold text-sm absolute z-10 left-0 w-1/2 text-center">Forecast</span>
-            <span class="option-2 option   font-bold text-sm absolute z-10 right-0 w-1/2 text-center">Air Quality</span>
+            <span class="scale-toggle-switch option option-1  text-gray-600 font-bold text-sm absolute z-10 left-0 w-1/2 text-center">&deg;C</span>
+            <span class="scale-toggle-switch option option-2 font-bold text-sm absolute z-10 right-0 w-1/2 text-center">&deg;F</span>
           </div>
         </div>
 
-        <!-- weather daily/hourly  display -->
-        <!-- weekday classes also represent hour classes  -->
-        <div class="weather-display font-semibold flex-1 ">
+        <div class="weather-display font-semibold flex-1">
           <div id="days-panel" class="days-panel weather-panel grid ">
             <!-- day 1 -->
             <div class="days light-theme theme-component active-day py-1 px-4 flex flex-col ">
@@ -74,7 +65,8 @@
               <div class="py-1 flex-1 flex flex-col justify-between">
                 <div class="weather-details h-[50%] flex items-center justify-between">
                   <div class="temperature-container w-[50%] self-center">
-                    <span class="temperature">18&deg;<span class="scale">C</span></span>
+                    <span class="temperature"><span class="scale"></span></span>
+                    
                   </div>
   
                   <div class="weather-icon-container w-[50%] text-right self-center">
@@ -84,9 +76,11 @@
     
                 <div class="other-weather-details h-[50%]">
                   <ul class="flex flex-col weather-description-list justify-evenly">
-                    <li class="weather-description">Weather: <span class="condition">Cloudy</span></li>
-                    <li class="weather-description">Humidity: <span class="condition">Cloudy</span></li>
-                    <li class="weather-description">Wind Speed: <span class="condition">Cloudy</span></li>    
+                    <li class="weather-description unimportant hidden">Range: <span class="condition range"></span></li>
+                    <li class="weather-description">Sky: <span class="condition cloud-cover"></span></li>
+                    <li class="weather-description">Chance of Rain: <span class="condition rain"></span></li>
+                    <li class="weather-description">Humidity: <span class="condition humidity"></span></li>
+                    <li class="weather-description unimportant hidden">Wind Speed: <span class="condition wind-speed"></span></li>    
                   </ul>
                 </div>
               </div>
@@ -105,7 +99,18 @@
                 </div>
 
                 <div class="temperature-container self-center">
-                  <span class="temperature">19&deg;<span class="scale">C</span></span>
+                  <span class="temperature"><span class="scale"></span></span>
+                  
+                </div>
+
+                <div class="other-weather-details h-[50%] hidden">
+                  <ul class="flex flex-col weather-description-list justify-evenly">
+                    <li class="weather-description unimportant hidden">Range: <span class="condition range"></span></li>
+                    <li class="weather-description">Weather: <span class="condition cloud-cover"></span></li>
+                    <li class="weather-description">Chance of Rain: <span class="condition rain"></span></li>
+                    <li class="weather-description">Humidity: <span class="condition humidity"></span></li>
+                    <li class="weather-description">Wind Speed: <span class="condition wind-speed"></span></li>    
+                  </ul>
                 </div>
 
               </div>
@@ -124,7 +129,18 @@
                 </div>
 
                 <div class="temperature-container self-center">
-                  <span class="temperature">20&deg;<span class="scale">C</span></span>
+                  <span class="temperature"><span class="scale"></span></span>
+                  
+                </div>
+
+                <div class="other-weather-details h-[50%] hidden">
+                  <ul class="flex flex-col weather-description-list justify-evenly">
+                    <li class="weather-description unimportant hidden">Range: <span class="condition range"></span></li>
+                    <li class="weather-description">Weather: <span class="condition cloud-cover"></span></li>
+                    <li class="weather-description">Chance of Rain: <span class="condition rain"></span></li>
+                    <li class="weather-description">Humidity: <span class="condition humidity"></span></li>
+                    <li class="weather-description">Wind Speed: <span class="condition wind-speed"></span></li>    
+                  </ul>
                 </div>
 
               </div>
@@ -143,7 +159,18 @@
                 </div>
 
                 <div class="temperature-container self-center">
-                  <span class="temperature">21&deg;<span class="scale">C</span></span>
+                  <span class="temperature"><span class="scale"></span></span>
+                  
+                </div>
+
+                <div class="other-weather-details h-[50%] hidden">
+                  <ul class="flex flex-col weather-description-list justify-evenly">
+                    <li class="weather-description unimportant hidden">Range: <span class="condition range"></span></li>
+                    <li class="weather-description">Weather: <span class="condition cloud-cover"></span></li>
+                    <li class="weather-description">Chance of Rain: <span class="condition rain"></span></li>
+                    <li class="weather-description">Humidity: <span class="condition humidity"></span></li>
+                    <li class="weather-description">Wind Speed: <span class="condition wind-speed"></span></li>    
+                  </ul>
                 </div>
 
               </div>
@@ -162,7 +189,18 @@
                 </div>
 
                 <div class="temperature-container self-center">
-                  <span class="temperature">22&deg;<span class="scale">C</span></span>
+                  <span class="temperature"><span class="scale"></span></span>
+                                    
+                </div>
+
+                <div class="other-weather-details h-[50%] hidden">
+                  <ul class="flex flex-col weather-description-list justify-evenly">
+                    <li class="weather-description unimportant hidden">Range: <span class="condition range"></span></li>
+                    <li class="weather-description">Weather: <span class="condition cloud-cover"></span></li>
+                    <li class="weather-description">Chance of Rain: <span class="condition rain"></span></li>
+                    <li class="weather-description">Humidity: <span class="condition humidity"></span></li>
+                    <li class="weather-description">Wind Speed: <span class="condition wind-speed"></span></li>    
+                  </ul>
                 </div>
 
               </div>
@@ -170,48 +208,44 @@
   
           </div>
 
-          <div id="day-expand-panel" class="details-panel-container weather-panel overflow-hidden disabled">
-            <div class="details-panel light-theme theme-component flex flex-col">
+          <div id="day-expand-panel" class=" details-panel-container weather-panel overflow-hidden disabled">
+            <div class="details-panel flex flex-col light-theme theme-component">
               <div class="date weekday-header flex justify-between border-gray-500 border-b py-1 px-4">
-                <div class="">
-                  <span class="weekday font-bold text-lg">Today</span>
+                <div class="date-header">
+                  <span class="weekday font-bold text-lg"></span>
                   <span class="date"></span>  
                 </div>
-  
+          
                 <span class="cancel font-semibold text-xl hover:cursor-pointer">X</span>
               </div>
             
               <div class="py-1 flex-1 flex ">
-                <div class="weather-details w-[40%] flex flex-col items-center justify-center">
+                <div class="weather-details w-[40%] flex flex-col items-center justify-center bg-gray-300">
                   <div class="weather-icon-containers">
-                    <i class="fa-solid fa-cloud-sun today-weather-icon "></i>
+                    <i class="fa-solid fa-cloud-sun today-weather-icon weather-icon "></i>
                   </div>
             
                   <div class="temperature-container text-center">
-                    <span class="today-temperature font-semibold ">18&deg;</span>
-                    <span class="today-scale ">C</span>
+                    <span class="today-temperature "></span>
+                    <span class="today-scale "></span>
                   </div>
                 </div>
             
                 <div class="other-weather-details w-[50%] flex flex-col justify-center px-4">
-                  <ul class="today-weather-description-list space-y-1 h-full flex flex-col justify-center border-gray-500 border-opacity-40 border-l">
-                    <li class="weather-description"><strong>Weather:</strong> <span class="condition">Cloudy</span></li>
-                    <li class="weather-description"><strong>Humidity:</strong> <span class="condition">75%</span></li>
-                    <li class="weather-description"><strong>Wind Speed:</strong> <span class="condition">10 km/h</span></li>    
+                  <ul class="today-weather-description-list  space-y-1 h-full flex flex-col justify-center border-gray-500 border-opacity-40 border-l pl-2">
+                    <li class="weather-description"><strong>Weather:</strong><span class="condition cloud-cover"></span></li>
+                    <li class="weather-description"><strong>Humidity:</strong><span class="condition humidity"></span></li>
+                    <li class="weather-description"><strong>Wind Speed:</strong><span class="condition wind-speed"></span></li>    
                   </ul>
                 </div>
               </div>
-  
             </div>
           </div>
-  
-
-
         </div>
       </div>
 
       <!-- bottom side of weather section -->
-      <div class="weather-map-container flex-1 flex flex-col">
+      <div class="min-h-[505px] min weather-map-container flex-1 flex flex-col">
         <div class="weather-map-container-header w-full flex items-center justify-between py-1">
           <span class="font-semibold">Global map</span>
           <button class="map-view-button light-theme hover:cursor-pointer py-1 px-2 rounded-xl text-center font-semibold">View wide</button>
@@ -233,7 +267,8 @@
       <section class="popular-cities-secion h-[65%] flex flex-1 flex-col px-1">
         <div class="popular-cities-title px-3 py-2 font-semibold">Popuar Cities</div>
         <div class="popular-cities-container h-[89%] flex-1 space-y-4 px-3 py-2">
-          <div class="popular-cities h-[6.5rem] w-full light-theme theme-component rounded-2xl flex px-7">
+         
+          <div class="popular-cities h-[7rem] w-full light-theme theme-component rounded-2xl flex px-7">
             <div class="country-details w-1/2 flex flex-col justify-evenly ">
               <div class="flex flex-col">
                 <span class="country-name text-xs">Spain</span>
@@ -247,7 +282,6 @@
               </div>
               <div class="weather-Temperature-container-pop-cities h-1/2 flex items-end">
                 <span class="weather-temperature">18&deg;</span>
-                <span class="wether-temperature-scale">C</span>
               </div>
             </div>
           </div>
@@ -266,7 +300,6 @@
               </div>
               <div class="weather-Temperature-container-pop-cities h-1/2 flex items-center">
                 <span class="weather-temperature">18&deg;</span>
-                <span class="weather-temperature-scale">C</span>
               </div>
             </div>
           </div>
@@ -285,7 +318,6 @@
               </div>
               <div class="weather-Temperature-container-pop-cities h-1/2 flex items-center">
                 <span class="weather-temperature">18&deg;</span>
-                <span class="weather-temperature-scale">C</span>
               </div>
             </div>
           </div>
@@ -304,7 +336,6 @@
               </div>
               <div class="weather-Temperature-container-pop-cities h-1/2 flex items-center">
                 <span class="weather-temperature">18&deg;</span>
-                <span class="weather-temperature-scale">C</span>
               </div>
             </div>
           </div>
@@ -323,26 +354,6 @@
               </div>
               <div class="weather-Temperature-container-pop-cities h-1/2 flex items-center">
                 <span class="weather-temperature">18&deg;</span>
-                <span class="weather-temperature-scale">C</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="popular-cities h-[6.5rem] w-full light-theme theme-component rounded-2xl flex px-7">
-            <div class="country-details w-1/2 flex flex-col justify-evenly ">
-              <div class="flex flex-col">
-                <span class="country-name text-xs">Spain</span>
-                <span class="city-name font-bold">Madrid</span>  
-              </div>
-              <span class="weather-condition font-semibold">mostly sunny</span>
-            </div>
-            <div class="country-weather-details w-1/2 flex flex-col items-center justify-between py-3">
-              <div class="weather-icon-container h-1/2 flex items-center">
-                <i class="fa-solid fa-cloud-sun weather-icon-popular-cities"></i>
-              </div>
-              <div class="weather-Temperature-container-pop-cities h-1/2 flex items-center">
-                <span class="weather-temperature">18&deg;</span>
-                <span class="weather-temperature-scale">C</span>
               </div>
             </div>
           </div>

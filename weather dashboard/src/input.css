@@ -2,16 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-html{
-  font-size: 14px;
+/* Define the fade transition */
+.fade-in {
+  transition: opacity 0.3s ease-in;
+  opacity: 1;
+}
+
+/* This class will fade out content before updating */
+.fade-out {
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
 }
 
 main{
   display: flex;
   justify-content: center;
   width: 100%;
-  /* width: 1200px; */
-  background-color: red;
 }
 
 .left-section{
@@ -64,7 +70,6 @@ main{
   height: 100%;
   width: 100%;
   border-radius: 20px;
-  gap: 10px;
   padding: 10px 0;
 }
 
@@ -86,6 +91,7 @@ main{
   grid-column: span 2;
   border: 0.5px solid black;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .days:hover {
@@ -93,8 +99,8 @@ main{
 }
 
 .active-day {
-  grid-column: span 3; /* Makes the active child nearly twice the size */
-  background-color:#1e293b; /* Just to highlight the active item */
+  grid-column: span 3;
+  background-color:#1e293b;
 }
 
 .other-days{
@@ -102,45 +108,38 @@ main{
   text-align: center;
 }
 
-.weekday-in-focus{
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
 .date{
   font-size: 0.9rem;
 }
 
 .temperature{
-  font-size: min(5vw, 8vh)
+  font-size: 50px
 }
 
-.scale {
-  font-size: min(3vw, 5vh)
+.scale{
+  font-size: 50px;
 }
 
 .weather-icon{
-  font-size: min(5vw, 9vh)
+  font-size: 50px;
 }
 
 .weather-description-list{
-  font-size: min(1vw, 2vh);
+  font-size: 13.5px;
+  line-height: 1.5;
 }
 /* .today- panel classes also serve as .tomorrow- panel classes */
-.today-temperature, .tomorrow-temperature{
-  font-size: min(7vw, 7vh)
+.today-temperature{
+  font-size: 60px;
+  font-weight: 700px;
 }
 
-.today-scale, .tomorrow-scale{
-  font-size: min(3vw, 5vh)
+.today-scale{
+  font-size: 50px
 }
 
-.today-weather-icon, .tomorrow-weather-icon{
-  font-size: min(5vw, 9vh)
-}
-
-.today-weather-description-list, .tomorrow-weather-description-list{
-  font-size: min(3vw, 3vh);
+.today-weather-description-list{
+  font-size: 15px
 }
 
 .popular-cities-container{
@@ -161,11 +160,11 @@ main{
 }
 
 .weather-icon-popular-cities{
-  font-size: min(4vw, 4vh)
+  font-size: 30px
 }
 
 .weather-Temperature-container-pop-cities{
-  font-size: min(3vw, 3vh)
+  font-size: 25px
 }
 
 .country-city{
@@ -248,7 +247,7 @@ main{
 }
 
 .date-header{
-  width: 150px;
+  width: 180px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -263,10 +262,28 @@ main{
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #1e293b;
+  color: #e5e7eb;
+}
+
+.homepage-search-button{
+  padding: 8px 25px;
+  border-left-width: 2px;
+  border-color: #9ca3af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .form{
   height: 35px;
   padding: 0;
-  /* background-color: red; */
+}
+
+strong{
+  font-weight: 700;
+}
+
+.location{
+  font-size: small;
 }
